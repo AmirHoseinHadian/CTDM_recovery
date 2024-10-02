@@ -16,7 +16,8 @@ def random_num_obs(min_obs=MIN_OBS, max_obs=MAX_OBS):
     return np.random.randint(low=min_obs, high=max_obs + 1)
 
 @njit(parallel=True)
-def sample_model(theta, num_obs, likelihood, type):
+def sample_model(theta, likelihood, type):
+    num_obs = 500
     batch_size = theta.shape[0]
     if theta.shape[1] == 4:
         x = np.zeros((batch_size, num_obs, 1))
@@ -37,12 +38,12 @@ class CollapsingDDM():
             batch_prior_fun=config["prior"],
             param_names=config["param_names"]
         )
-        self.context = bf.simulation.ContextGenerator(
-            non_batchable_context_fun=random_num_obs
-        )
+        # self.context = bf.simulation.ContextGenerator(
+        #     non_batchable_context_fun=random_num_obs
+        # )
         self.likelihood = bf.simulation.Simulator(
             batch_simulator_fun=partial(sample_model, likelihood=config['likelihood'], type=config['type']),
-            context_generator=self.context
+            # context_generator=self.context
         )
         self.generator = bf.simulation.GenerativeModel(
             prior=self.prior,
@@ -57,11 +58,11 @@ class CollapsingDDM():
     
     def configure(self, forward_dict):
         data = forward_dict["sim_data"]
-        vec_num_obs = forward_dict["sim_non_batchable_context"] * np.ones((data.shape[0], 1))
+        # vec_num_obs = forward_dict["sim_non_batchable_context"] * np.ones((data.shape[0], 1))
         params = forward_dict["prior_draws"].astype(np.float32)
         out_dict = dict(
             parameters=(params - self.prior_means) / self.prior_stds,
-            direct_conditions=np.sqrt(vec_num_obs).astype(np.float32),
+            # direct_conditions=np.sqrt(vec_num_obs).astype(np.float32),
             summary_conditions=data.astype(np.float32),
         )
         return out_dict
