@@ -7,9 +7,8 @@ def sample_ddm_no_constraint_trial(theta, type, beta=0.5, dt=0.001, s=1.0, max_i
     n_iter = 0
     x = a0 * beta
     c = np.sqrt(dt) * s
-
+    t = np.arange(0, max_iter * dt, dt)
     if type == "hyperbolic":
-        t = np.arange(0, max_iter * dt, dt)
         upper_bound = a0 / (1 + lamda * t)
     else:
         upper_bound = a0 * np.exp(-lamda * t)
@@ -28,9 +27,8 @@ def sample_ddm_ndt_constraint_trial(theta, type, beta=0.5, dt=0.001, s=1.0, max_
     n_iter = 0
     x = a0 * beta
     c = np.sqrt(dt) * s
-
+    t = np.arange(0, max_iter * dt, dt)
     if type == "hyperbolic":
-        t = np.arange(0, max_iter * dt, dt)
         upper_bound = a0 / (1 + lamda * t)
     else:
         upper_bound = a0 * np.exp(-lamda * t)
