@@ -18,8 +18,8 @@ model_configs = {
         "likelihood": sample_ddm_ndt_constraint_trial,
         "type": "hyperbolic",
         "param_names": [r"$v$", r"$a_0$", r"$\lambda$", r"$\tau$", r"$\sigma_z$"],
-        "prior_means": np.array([2.4, 3.0 , 2.0 , 0.6, 0.2]),
-        "prior_stds": np.array([1.82, 1.83, 1.39, 0.45, 0.15])
+        "prior_means": np.array([1.5, 2.8, 1.0 , 0.5, 0.3]),
+        "prior_stds": np.array([0.9, 0.7, 0.6, 0.3, 0.1])
     },
     "exponential_no_contraint": {
         "name": "exponential_no_contraint",
