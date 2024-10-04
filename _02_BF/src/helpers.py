@@ -75,6 +75,7 @@ class NeuralApproximator():
         self.summary_net = bf.networks.SetTransformer(input_dim=input_dims, summary_dim=32)
         self.inference_net = bf.networks.InvertibleNetwork(
             num_params=len(model.prior.param_names),
+            coupling_design="spline",
             coupling_settings={"dense_args": dict(kernel_regularizer=None), "dropout": False},
         )
         self.amortizer = bf.amortizers.AmortizedPosterior(self.inference_net, self.summary_net)
