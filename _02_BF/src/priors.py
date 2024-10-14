@@ -32,7 +32,7 @@ def sample_ddm_ndt_constraint_prior(batch_size):
     a0 = np.random.uniform(1.5, 4, size=batch_size)
     lamda = np.random.uniform(0.1, 2, size=batch_size)
     tau = np.random.uniform(0.05, 1, size=batch_size)
-    sigma_z = np.random.uniform(0.05, 0.5, size=batch_size)
+    sigma_z = np.random.uniform(0.05, 1.0, size=batch_size)
     return np.c_[drift, a0, lamda, tau, sigma_z]
 
 #----------------------------------------------------------------------------------------#
@@ -50,5 +50,5 @@ def sample_cdm_ndt_constraint_prior(batch_size):
     a0 = np.random.uniform(1.5, 4, size=(batch_size, 1))
     lamda = np.random.uniform(0.1, 2, size=(batch_size, 1))
     tau = np.random.uniform(0.05, 1, size=(batch_size, 1))
-    sigma_z = np.random.uniform(0.05, 0.5, size=(batch_size, 1))
+    sigma_z = np.random.uniform(0.05, 1.0, size=(batch_size, 1))
     return np.c_[mu, a0, lamda, tau, sigma_z]

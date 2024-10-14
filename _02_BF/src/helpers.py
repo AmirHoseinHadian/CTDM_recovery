@@ -126,7 +126,6 @@ class CollapsingCDM():
 class NeuralApproximator():
     def __init__(self, model):
         self.model = model
-        input_dims = self.model.generate(1)['sim_data'].shape[-1]
         self.summary_net = bf.networks.SetTransformer(input_dim=model.output_dims, summary_dim=32)
         self.inference_net = bf.networks.InvertibleNetwork(
             num_params=len(model.prior.param_names),

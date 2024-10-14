@@ -63,7 +63,7 @@ def sample_cdm_no_constraint_trial(theta, type, dt=0.001, s=1.0, max_iter=1e5):
         n_iter += 1
     rt = n_iter * dt + tau
     resp = np.arctan2(x[1], x[0])
-    return np.array[(rt, resp)]
+    return np.array([rt, resp])
 
 @njit
 def sample_cdm_ndt_constraint_trial(theta, type, dt=0.001, s=1.0, max_iter=1e5):
@@ -83,6 +83,6 @@ def sample_cdm_ndt_constraint_trial(theta, type, dt=0.001, s=1.0, max_iter=1e5):
         n_iter += 1
     rt = n_iter * dt + tau
     resp = np.arctan2(x[1], x[0])
-    return np.array[(rt, resp, np.random.normal(tau, sigma_z))]
+    return np.array([rt, resp, np.random.normal(tau, sigma_z)])
 
 
