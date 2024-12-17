@@ -12,8 +12,8 @@ model_configs = {
         "type": "hyperbolic",
         "output_dims": 1,
         "param_names": [r"$v$", r"$a_0$", r"$\lambda$", r"$\tau$"],
-        "prior_means": np.array([1.5, 2.75 , 1.05 , 0.5]),
-        "prior_stds": np.array([0.86, 0.72, 0.55, 0.27])
+        "prior_means": np.array([2. , 2.7, 1.3, 0.4]),
+        "prior_stds": np.array([1.4, 1.3, 0.8, 0.2])
     },
     "hyperbolic_ddm_ndt_contraint": {
         "name": "hyperbolic_ddm_ndt_contraint",
@@ -23,8 +23,8 @@ model_configs = {
         "type": "hyperbolic",
         "output_dims": 2,
         "param_names": [r"$v$", r"$a_0$", r"$\lambda$", r"$\tau$", r"$\sigma_z$"],
-        "prior_means": np.array([1.5, 2.75 , 1.05 , 0.5, 0.5]),
-        "prior_stds": np.array([0.86, 0.72, 0.55, 0.27, 0.27])
+        "prior_means": np.array([2. , 2.7, 1.3, 0.4, 0.6]),
+        "prior_stds": np.array([1.4, 1.3, 0.8, 0.2, 0.4])
     },
     "exponential_ddm_no_contraint": {
         "name": "exponential_ddm_no_contraint",
@@ -34,8 +34,8 @@ model_configs = {
         "type": "exponential",
         "output_dims": 1,
         "param_names": [r"$v$", r"$a_0$", r"$\lambda$", r"$\tau$"],
-        "prior_means": np.array([1.5, 2.75 , 1.05 , 0.5]),
-        "prior_stds": np.array([0.86, 0.72, 0.55, 0.27])
+        "prior_means": np.array([2. , 2.7, 1.3, 0.4]),
+        "prior_stds": np.array([1.4, 1.3, 0.8, 0.2])
     },
     "exponential_ddm_ndt_contraint": {
         "name": "exponential_ddm_ndt_contraint",
@@ -45,8 +45,8 @@ model_configs = {
         "type": "exponential",
         "output_dims": 2,
         "param_names": [r"$v$", r"$a_0$", r"$\lambda$", r"$\tau$", r"$\sigma_z$"],
-        "prior_means": np.array([1.5, 2.75 , 1.05 , 0.5, 0.5]),
-        "prior_stds": np.array([0.86, 0.72, 0.55, 0.27, 0.27])
+        "prior_means": np.array([2. , 2.7, 1.3, 0.4, 0.6]),
+        "prior_stds": np.array([1.4, 1.3, 0.8, 0.2, 0.4])
     },
     # "hyperbolic_cdm_no_contraint": {
     #     "name": "hyperbolic_cdm_no_contraint",

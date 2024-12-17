@@ -41,7 +41,7 @@ def sample_ddm_ndt_constraint_trial(theta, type, beta=0.5, dt=0.001, s=1.0, max_
         n_iter += 1
     rt = n_iter * dt
     loc_z = np.log(tau) - 0.5 * scale_z**2
-    return np.array([rt+tau if x >= 0 else -(rt+tau), np.lognormal(loc_z, scale_z)])
+    return np.array([rt+tau if x >= 0 else -(rt+tau), np.random.lognormal(loc_z, scale_z)])
 
 #----------------------------------------------------------------------------------------#
 # CDDM
