@@ -136,7 +136,8 @@ class NeuralApproximator():
             generative_model=self.model.generate,
             configurator=self.model.configure,
             amortizer=self.amortizer,
-            checkpoint_path=f"../../checkpoints/{self.model.generator.name}"
+            checkpoint_path=f"../../checkpoints/{self.model.generator.name}",
+            max_to_keep=1
         )
 
     def run(self, epochs=75, iterations_per_epoch=1000, batch_size=32):
