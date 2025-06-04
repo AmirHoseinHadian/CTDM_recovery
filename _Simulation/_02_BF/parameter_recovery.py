@@ -15,6 +15,7 @@ NUM_OBS_VECTOR = NUM_OBS * np.ones((NUM_VALIDATION_SIMS, 1))
 # PARAMETER RECOVERY
 #----------------------------------------------------------------------------------------#
 r2_scores_dict = {}
+all_recovery_params = {}
 
 model_keys = model_configs.keys()
 for key in model_keys:
@@ -22,6 +23,7 @@ for key in model_keys:
     current_config = model_configs[key]
     model = CollapsingDDM(current_config)
     approximator = NeuralApproximator(model)
+    recovery_params = np.zeros((NUM_VALIDATION_SIMS, len(current_config['param_names']), 2))
     # simulate validation data
     theta_true = current_config['prior'](NUM_VALIDATION_SIMS)
     validation_sim = sample_ddm(
@@ -41,8 +43,15 @@ for key in model_keys:
     # calculate r2 scores between true and estimated parameters
     r2_scores = r2_score(theta_true, theta_estimated, multioutput='raw_values')
     r2_scores_dict[key] = r2_scores
+
+    recovery_params[:, :, 0] = theta_true
+    recovery_params[:, :, 1] = theta_estimated
+    all_recovery_params[key] = recovery_params
+
 with open('data/BF_recovery_r2_scores.pkl', 'wb') as f:
     pickle.dump(r2_scores_dict, f)
+with open('data/BF_recovery_params.pkl', 'wb') as f:
+    pickle.dump(all_recovery_params, f)
 
 # SENSITIVITY TO NOISE
 #----------------------------------------------------------------------------------------#
